@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./css/popup_menu.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3>PSVB</h3>
+      </div>
+      <div class="toggle">
+        <label class="switch">
+          <input type="checkbox" id="extension_enabled_slider_button">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="label" id="extension_reload_tab_button_label">Enabled</div>
+      <div class="reload" id="extension_reload_tab_div">
+        <p>Reloading the tab is required to disable/enable the extension for this tab.</p>
+        <button id="extension_reload_tab_button">Reload?</button>
+      </div>
+    </div>
+    
+    <script src="popup.js"></script>
+  </body>
+</html>

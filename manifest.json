@@ -1,0 +1,21 @@
+{
+  "name": "Photosensitivity Video Blocker",
+  "description": "Stops videos and gifs from auto-playing.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup_menu.html",
+    "default_icon": "PSVB_icon.png"
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "permissions": [
+    "tabs",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ]
+}

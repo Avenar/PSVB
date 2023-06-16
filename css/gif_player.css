@@ -1,0 +1,47 @@
+img.gif {
+	display: none !important;
+}
+
+.jsgif {
+	position: relative;
+  color: #18BBF7;
+  user-select: none;
+  text-align: center;
+  display: inline-block;
+}
+
+.gifcontrol {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+  bottom: 0px;
+  right: 0px;
+	cursor: pointer;
+
+	&:after {
+		transition: background 0.25s ease-in-out;
+		position: absolute;
+		display: block;
+	}
+
+	&.loading {
+		background: rgba(255, 255, 255, 0.75);
+	}
+
+	&.playing {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    
+		&:hover {
+			opacity: 1;
+      background-color: rgba(255, 255, 255, 0.25);
+		}
+	}
+
+	&.paused {
+		background: rgba(255, 255, 255, 0.5);
+	}
+
+	transition: background 0.25s ease-in-out;
+	z-index: 100;
+}

@@ -1,0 +1,28 @@
+.png_player_container {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  color: #18BBF7;
+}
+
+.png_player_container:hover .png_player_overlay {
+  opacity: 0.7;
+}
+
+.png_player_overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  text-align: center;
+  background-color: rgba(255, 255, 255);
+}
+
+.png_player_overlay.paused {
+  opacity: 0.4;
+}
+
+.png_player_overlay.playing {
+  opacity: 0;
+}

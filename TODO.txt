@@ -1,0 +1,8 @@
+
+Optimize data loaders.
+
+Find new method of pausing video elements. - FAILED
+
+Settings page
+
+Rework to Firefox

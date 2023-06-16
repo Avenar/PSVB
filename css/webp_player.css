@@ -1,0 +1,30 @@
+.webp_player_container {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  color: #18BBF7;
+}
+
+.webp_player_container:hover .webp_player_overlay {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.webp_player_overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: background 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
+
+.webp_player_overlay.paused {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.webp_player_overlay.playing {
+  opacity: 0;
+}
