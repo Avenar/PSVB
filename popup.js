@@ -45,6 +45,7 @@ getCurrentTab().then((tab) => {
           // success
           toggleReloadSection()
         });
+        chrome.action.setIcon({path: "PSVB_icon.png", tabId: tabId});
       } else {
         // Disabling script
         console.log("Disabling");
@@ -56,6 +57,7 @@ getCurrentTab().then((tab) => {
           // success
           toggleReloadSection()
         });
+        chrome.action.setIcon({path: "PSVB_icon_grey.png", tabId: tabId});
       }
     });
   });

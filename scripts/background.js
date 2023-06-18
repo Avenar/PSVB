@@ -84,3 +84,15 @@ chrome.runtime.onMessage.addListener(
     }
   }
 );
+
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+  chrome.storage.sync.get(["PSVBExtensionDisabled_" + tabId], function(result) {
+    if (result["PSVBExtensionDisabled_" + tabId] === true) {
+      // Use a greyed-out version of the icon
+      chrome.action.setIcon({path: "../PSVB_icon_grey.png", tabId: tabId});
+    } else {
+      // Use the normal version of the icon
+      chrome.action.setIcon({path: "../PSVB_icon.png", tabId: tabId});
+    }
+  });
+});
