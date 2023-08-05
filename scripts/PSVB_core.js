@@ -102,24 +102,27 @@ class PSVB {
               instance.ignoreListLoaded = true;
             });
             
+            var urlCheckAndInvokeRework = (target) => {
+              // TODO: add detection for base64 data url
+              let imgUrl = target.src;
+              if (imgUrl.split(".gif").length > 1) {
+                if (_PSVB_DEBUG) _psvb_logger("this was a gif");
+                instance.reworkGif(target);
+              } else if (imgUrl.split(".png").length > 1) {
+                if (_PSVB_DEBUG) _psvb_logger("this was a png");
+                instance.reworkPng(target);
+              } else if (imgUrl.split(".webp").length > 1) {
+                if (_PSVB_DEBUG) _psvb_logger("this was a webp");
+                instance.reworkWebp(target);
+              } else {
+                if (_PSVB_DEBUG) _psvb_logger("unhandled img", "ERROR", target);
+              }
+            }
+            
             var onLoadCheckerFunction = (e) => {
               if (e.target.tagName) {
                 if (e.target.tagName.toLowerCase() == 'img') {
-                  // if (instance.checkIgnoreList(e.target.src)) return;
-                  // TODO: add detection for base64 data url
-                  let imgUrl = e.target.src;
-                  if (imgUrl.split(".gif").length > 1) {
-                    if (_PSVB_DEBUG) _psvb_logger("this was a gif");
-                    instance.reworkGif(e.target);
-                  } else if (imgUrl.split(".png").length > 1) {
-                    if (_PSVB_DEBUG) _psvb_logger("this was a png");
-                    instance.reworkPng(e.target);
-                  } else if (imgUrl.split(".webp").length > 1) {
-                    if (_PSVB_DEBUG) _psvb_logger("this was a webp");
-                    instance.reworkWebp(e.target);
-                  } else {
-                    if (_PSVB_DEBUG) _psvb_logger("unhandled img", "ERROR", e.target);
-                  }
+                  urlCheckAndInvokeRework(e.target);
                 }
               }
             }
@@ -127,6 +130,14 @@ class PSVB {
             // Attach listener and run fixer on images
             _psvb_logger("Initializing image listener.");
             document.addEventListener('load', onLoadCheckerFunction, true);
+            
+            // Check for cached images
+            let imgs = document.getElementsByTagName('img');
+            for (let i = 0; i < imgs.length; ++i) {
+              if (imgs[i].complete) {
+                urlCheckAndInvokeRework(imgs[i])
+              }
+            }
           }
         })
       }
