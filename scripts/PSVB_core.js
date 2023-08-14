@@ -103,6 +103,8 @@ class PSVB {
             });
             
             var urlCheckAndInvokeRework = (target) => {
+              // Mark image as reworked to not invoke multiple times
+              target.dataset.psvb_marked = true;
               // TODO: add detection for base64 data url
               let imgUrl = target.src;
               if (imgUrl.split(".gif").length > 1) {
@@ -120,9 +122,11 @@ class PSVB {
             }
             
             var onLoadCheckerFunction = (e) => {
-              if (e.target.tagName) {
-                if (e.target.tagName.toLowerCase() == 'img') {
-                  urlCheckAndInvokeRework(e.target);
+              if (e.target.dataset.psvb_marked != true) {
+                if (e.target.tagName) {
+                  if (e.target.tagName.toLowerCase() == 'img') {
+                    urlCheckAndInvokeRework(e.target);
+                  }
                 }
               }
             }
