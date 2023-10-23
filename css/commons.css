@@ -1,3 +1,6 @@
 .psvb_invisible {
   display: none !important;
 }
+.ytp-title-beacon {
+  visibility: hidden !important;
+}
